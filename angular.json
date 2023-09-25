@@ -1,0 +1,129 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "bullco-angular": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bullco-angular",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "src/assets/fontawesome-5.5/css/all.min.css",
+              "src/assets/slick/slick.css",
+              "src/assets/slick/slick-theme.css",
+              "src/assets/magnific-popup/magnific-popup.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/tooplate-infinite-loop.css"
+            ],
+            "scripts": [
+              "src/js/jquery-1.9.1.min.js",
+              "src/assets/slick/slick.min.js",
+              "src/assets/magnific-popup/jquery.magnific-popup.min.js",
+              "src/js/easing.min.js",
+              "src/js/jquery.singlePageNav.min.js",
+              "src/js/bootstrap.min.js",
+              "./node_modules/jquery/dist/jquery.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "bullco-angular:build:production"
+            },
+            "development": {
+              "browserTarget": "bullco-angular:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bullco-angular:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "src/assets/fontawesome-5.5/css/all.min.css",
+              "src/assets/slick/slick.css",
+              "src/assets/slick/slick-theme.css",
+              "src/assets/magnific-popup/magnific-popup.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/tooplate-infinite-loop.css"
+            ],
+            "scripts": [
+              "src/assets/js/jquery-1.9.1.min.js",
+              "src/assets/slick/slick.min.js",
+              "src/assets/magnific-popup/jquery.magnific-popup.min.js",
+              "src/assets/js/easing.min.js",
+              "src/assets/js/jquery.singlePageNav.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "./node_modules/jquery/dist/jquery.min.js"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "02e0a808-e199-4794-8c2c-70770f197c52"
+  }
+}
